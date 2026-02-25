@@ -8,10 +8,13 @@ use App\Services\UserService;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\JsonResponse;
-
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class UserController extends Controller
 {
+
+    use AuthorizesRequests;
     protected $userService;
+
 
     // 依賴注入 Service
     public function __construct(UserService $userService)

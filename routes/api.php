@@ -7,3 +7,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('users', UserController::class);
 });
+
+Route::middleware('auth:sanctum')->apiResource('users', UserController::class);
+
+Route::get('/test', function() {
+    return response()->json(['status' => 'OK']);
+});
