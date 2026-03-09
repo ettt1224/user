@@ -4,12 +4,12 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class storeUserRequest extends FormRequest
+class StoreUserRequest extends FormRequest
 {
 
     public function authorize(): bool
     {
-        return $this->use() && $this->uesr()->role === 'admin';
+        return $this->user() && $this->user()->role === 'admin';
     }
 
 
@@ -17,7 +17,7 @@ class storeUserRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unque:users,email',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8',
             'role' => 'in:admin,user',
         ];
